@@ -6,17 +6,25 @@ Searches TikTok for all ads with the given search parameters.
 def search_all_ads():
     url = "https://ads.tiktok.com/creative_radar_api/v1/top_ads/v2/list"
 
-    # Defining search parameters; multiple selections for the same parameter are included in the same string
+    # Defining search parameters; multiple selections for the same parameter are included in the same string separated by a comma and no space
+    query = ""
     objectives = ["Traffic", "App Installs", "Conversions", "Video Views", "Reach", "Lead Generation", "Product sales"]
-    objective = objectives.index("Conversions") + 1
+    # Objective number corresponds to the 1-based index of the objective in the objectives list
+    # objective = "3"
+    objective = "7,3"
     period = 30
     page = 1
     limit = 20
     # for_you, reach, ctr, 2s_view_rate, 6s_view_rate, cvr, likes
     order_by = "for_you"
+    # UK = GB, Canada = CA, Australia = AU
     country = "US"
 
-    querystring = {"objective":f"{objective}","period":f"{period}","industry":"22000000000,16000000000,12000000000,14000000000,24000000000,30000000000,10000000000,13000000000,27000000000,29000000000,21000000000,18000000000,26000000000,23000000000,19000000000,28000000000,15000000000,17000000000,11000000000","page":f"{page}","limit":f"{limit}","order_by":f"{order_by}","country_code":f"{country}"}
+    # querystring = {"objective":f"{objective}","period":f"{period}","industry":"22000000000,16000000000,12000000000,14000000000,24000000000,30000000000,10000000000,13000000000,27000000000,29000000000,21000000000,18000000000,26000000000,23000000000,19000000000,28000000000,15000000000,17000000000,11000000000","page":f"{page}","limit":f"{limit}","order_by":f"{order_by}","country_code":f"{country}"}
+    querystring = {"page":f"{page}", "limit":f"{limit}", "keyword":query, "period":f"{period}", "country_code":f"{country}", "industry":"22000000000,16000000000,12000000000,14000000000,24000000000,30000000000,10000000000,13000000000,27000000000,29000000000,21000000000,18000000000,26000000000,23000000000,19000000000,28000000000,15000000000,17000000000,11000000000", "objective":f"{objective}", "order_by":f"{order_by}"}
+
+    countries_referer_query = country.replace(",","%2C")
+    object_referer_query = objective.replace(",","%2C")
 
     payload = ""
     headers = {
@@ -25,7 +33,7 @@ def search_all_ads():
         "accept-language": "en-US,en;q=0.8",
         "lang": "en",
         "priority": "u=1, i",
-        "referer": "https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en?period=30&region=US&industry=22%2C16%2C12%2C14%2C24%2C30%2C10%2C13%2C27%2C29%2C21%2C18%2C26%2C23%2C19%2C28%2C15%2C17%2C11&object=3",
+        "referer": f"https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en?period={period}&region={countries_referer_query}&industry=22%2C16%2C12%2C14%2C24%2C30%2C10%2C13%2C27%2C29%2C21%2C18%2C26%2C23%2C19%2C28%2C15%2C17%2C11&object={object_referer_query}",
         "sec-ch-ua": "\"Not)A;Brand\";v=\"99\", \"Brave\";v=\"127\", \"Chromium\";v=\"127\"",
         "sec-ch-ua-mobile": "?0",
         "sec-ch-ua-platform": "\"Windows\"",
