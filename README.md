@@ -6,6 +6,7 @@
 
 ## UX
 - build functionality for selecting industries
+- Scrape data from the analysis page for each ad (API endpoint response includes total number of ads found from the given search query)
 
 ## Headers
 - does timestamp header need to be correct for the request to work? Will this get me banned?
