@@ -1,0 +1,100 @@
+GENERAL AD INFO
+
+curl 'https://ads.tiktok.com/creative_radar_api/v1/top_ads/v2/detail?material_id=7217202900710850561' \
+  -H 'Accept: application/json, text/plain, */*' \
+  -H 'Accept-Language: en-US,en;q=0.9' \
+  -H 'Cache-Control: no-cache' \
+  -H 'Connection: keep-alive' \
+  -H 'Cookie: locale=en-US; _tt_enable_cookie=1; _ttp=2Yy6Dhda4wcei6L9cIr8GXczqLX; lang_type=en; passport_csrf_token=0d0bbe3d20fc80d551908afb4ec264f0; passport_csrf_token_default=0d0bbe3d20fc80d551908afb4ec264f0; s_v_web_id=verify_lzqcxml6_LMSPBqPc_1NSL_4Hn0_99cu_D2HVK59jqZfi; passport_auth_status_ads=1d30e9754270cef3ba893a449b36f3b1%2C; passport_auth_status_ss_ads=1d30e9754270cef3ba893a449b36f3b1%2C; sso_uid_tt_ads=5d0e6baf57edbf89f3c9974b6545e13b58f1468f03d784aac3c5dfd0e741c135; sso_uid_tt_ss_ads=5d0e6baf57edbf89f3c9974b6545e13b58f1468f03d784aac3c5dfd0e741c135; sso_user_ads=7fe73f0b607d1beb52b1268fc8e2d48d; sso_user_ss_ads=7fe73f0b607d1beb52b1268fc8e2d48d; sid_ucp_sso_v1_ads=1.0.0-KGFjNDIzMWMxNDc4OTQyZTA1ZjliYzgwODBhMDZjZWM4Njg2YjdlODYKFwiRiI_cupqmlWYQiN_ltQYYzCQ4CEASEAMaA3NnMSIgN2ZlNzNmMGI2MDdkMWJlYjUyYjEyNjhmYzhlMmQ0OGQ; ssid_ucp_sso_v1_ads=1.0.0-KGFjNDIzMWMxNDc4OTQyZTA1ZjliYzgwODBhMDZjZWM4Njg2YjdlODYKFwiRiI_cupqmlWYQiN_ltQYYzCQ4CEASEAMaA3NnMSIgN2ZlNzNmMGI2MDdkMWJlYjUyYjEyNjhmYzhlMmQ0OGQ; odin_tt=cd9462fbc97de0631280afd7203046f1163657bbd4df17c00a3717bb241b93c58764f287105325963ab13b176c66654d6409fde1f80b00ab704ae960b7819bda; sid_guard_ads=8a2e3b5f7ebe3239d69521d567757479%7C1723428744%7C5184000%7CFri%2C+11-Oct-2024+02%3A12%3A24+GMT; uid_tt_ads=6572bc2d6505e83b1402be938a3984805e96cabbdcb1d9f2056b4dc27d5c46f2; uid_tt_ss_ads=6572bc2d6505e83b1402be938a3984805e96cabbdcb1d9f2056b4dc27d5c46f2; sid_tt_ads=8a2e3b5f7ebe3239d69521d567757479; sessionid_ads=8a2e3b5f7ebe3239d69521d567757479; sessionid_ss_ads=8a2e3b5f7ebe3239d69521d567757479; sid_ucp_v1_ads=1.0.0-KDVlMDE1MGQ1OGVhMzg1NzRlOTFkZGMzOWI5ZmM4NTJhNTI2NTMzNmMKGQiRiI_cupqmlWYQiN_ltQYYzCQgDDgIQBIQAxoDc2cxIiA4YTJlM2I1ZjdlYmUzMjM5ZDY5NTIxZDU2Nzc1NzQ3OQ; ssid_ucp_v1_ads=1.0.0-KDVlMDE1MGQ1OGVhMzg1NzRlOTFkZGMzOWI5ZmM4NTJhNTI2NTMzNmMKGQiRiI_cupqmlWYQiN_ltQYYzCQgDDgIQBIQAxoDc2cxIiA4YTJlM2I1ZjdlYmUzMjM5ZDY5NTIxZDU2Nzc1NzQ3OQ; i18next=en; cookie-consent={%22ga%22:false%2C%22af%22:false%2C%22fbp%22:false%2C%22lip%22:false%2C%22bing%22:false%2C%22ttads%22:false%2C%22reddit%22:false%2C%22hubspot%22:false%2C%22version%22:%22v10%22}; ttwid=1%7ClLNh7DslNZRR1AsARYWah8TQPImLqKImAkb5hIHNmdI%7C1723430357%7C730ad0e599d30f4bd3186ab2d69942b4c8ef07d5e0d35a453f0c4bc7b59099e8; msToken=AT5NC3AKRAYEdyfRmc_tG4hz-_FY_9Fo92wvnGtFj8s0_--rtv7r43z_ELwuGZHqvlNDoh7ykYADNE52OwSHFQmR0Q2A1hCmrMpj44W2WhiKWVkX89_3zBfCdAVZyWVIGm6e; msToken=KKGHGFc_QjBmz-rFNIqmeUe2HqFnssyFcWqMUrniBSzEqGiBPUbYG24WmYnDJ76Ap-yzYOkbPvkiPJhc39saYH9dPpMloOhgyeLzIuJCeN_51OcMmj-taVK2v8ptQEyf4058_VZNuHe52rsJ_wo=' \
+  -H 'Pragma: no-cache' \
+  -H 'Referer: https://ads.tiktok.com/business/creativecenter/topads/7217202900710850561/pc/en?countryCode=US&from=001110&period=30' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 OPR/112.0.0.0' \
+  -H 'anonymous-user-id: d3e22bbe-5af5-4fe6-9242-cdbf43cbdc34' \
+  -H 'lang: en' \
+  -H 'sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Opera";v="112"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'timestamp: 1723430411' \
+  -H 'user-sign: 7a3b3a50bbe69b54' \
+  -H 'web-id: 7402066609647650305'
+
+----------------------------------------
+
+TIME ANALYSIS DATA FOR EACH SECOND FOR A GIVEN METRIC
+
+curl 'https://ads.tiktok.com/creative_radar_api/v1/top_ads/keyframe?metric=retain_ctr&material_id=7217202900710850561' \
+  -H 'Accept: application/json, text/plain, */*' \
+  -H 'Accept-Language: en-US,en;q=0.9' \
+  -H 'Cache-Control: no-cache' \
+  -H 'Connection: keep-alive' \
+  -H 'Cookie: locale=en-US; _tt_enable_cookie=1; _ttp=2Yy6Dhda4wcei6L9cIr8GXczqLX; lang_type=en; passport_csrf_token=0d0bbe3d20fc80d551908afb4ec264f0; passport_csrf_token_default=0d0bbe3d20fc80d551908afb4ec264f0; s_v_web_id=verify_lzqcxml6_LMSPBqPc_1NSL_4Hn0_99cu_D2HVK59jqZfi; passport_auth_status_ads=1d30e9754270cef3ba893a449b36f3b1%2C; passport_auth_status_ss_ads=1d30e9754270cef3ba893a449b36f3b1%2C; sso_uid_tt_ads=5d0e6baf57edbf89f3c9974b6545e13b58f1468f03d784aac3c5dfd0e741c135; sso_uid_tt_ss_ads=5d0e6baf57edbf89f3c9974b6545e13b58f1468f03d784aac3c5dfd0e741c135; sso_user_ads=7fe73f0b607d1beb52b1268fc8e2d48d; sso_user_ss_ads=7fe73f0b607d1beb52b1268fc8e2d48d; sid_ucp_sso_v1_ads=1.0.0-KGFjNDIzMWMxNDc4OTQyZTA1ZjliYzgwODBhMDZjZWM4Njg2YjdlODYKFwiRiI_cupqmlWYQiN_ltQYYzCQ4CEASEAMaA3NnMSIgN2ZlNzNmMGI2MDdkMWJlYjUyYjEyNjhmYzhlMmQ0OGQ; ssid_ucp_sso_v1_ads=1.0.0-KGFjNDIzMWMxNDc4OTQyZTA1ZjliYzgwODBhMDZjZWM4Njg2YjdlODYKFwiRiI_cupqmlWYQiN_ltQYYzCQ4CEASEAMaA3NnMSIgN2ZlNzNmMGI2MDdkMWJlYjUyYjEyNjhmYzhlMmQ0OGQ; odin_tt=cd9462fbc97de0631280afd7203046f1163657bbd4df17c00a3717bb241b93c58764f287105325963ab13b176c66654d6409fde1f80b00ab704ae960b7819bda; sid_guard_ads=8a2e3b5f7ebe3239d69521d567757479%7C1723428744%7C5184000%7CFri%2C+11-Oct-2024+02%3A12%3A24+GMT; uid_tt_ads=6572bc2d6505e83b1402be938a3984805e96cabbdcb1d9f2056b4dc27d5c46f2; uid_tt_ss_ads=6572bc2d6505e83b1402be938a3984805e96cabbdcb1d9f2056b4dc27d5c46f2; sid_tt_ads=8a2e3b5f7ebe3239d69521d567757479; sessionid_ads=8a2e3b5f7ebe3239d69521d567757479; sessionid_ss_ads=8a2e3b5f7ebe3239d69521d567757479; sid_ucp_v1_ads=1.0.0-KDVlMDE1MGQ1OGVhMzg1NzRlOTFkZGMzOWI5ZmM4NTJhNTI2NTMzNmMKGQiRiI_cupqmlWYQiN_ltQYYzCQgDDgIQBIQAxoDc2cxIiA4YTJlM2I1ZjdlYmUzMjM5ZDY5NTIxZDU2Nzc1NzQ3OQ; ssid_ucp_v1_ads=1.0.0-KDVlMDE1MGQ1OGVhMzg1NzRlOTFkZGMzOWI5ZmM4NTJhNTI2NTMzNmMKGQiRiI_cupqmlWYQiN_ltQYYzCQgDDgIQBIQAxoDc2cxIiA4YTJlM2I1ZjdlYmUzMjM5ZDY5NTIxZDU2Nzc1NzQ3OQ; i18next=en; cookie-consent={%22ga%22:false%2C%22af%22:false%2C%22fbp%22:false%2C%22lip%22:false%2C%22bing%22:false%2C%22ttads%22:false%2C%22reddit%22:false%2C%22hubspot%22:false%2C%22version%22:%22v10%22}; ttwid=1%7ClLNh7DslNZRR1AsARYWah8TQPImLqKImAkb5hIHNmdI%7C1723430357%7C730ad0e599d30f4bd3186ab2d69942b4c8ef07d5e0d35a453f0c4bc7b59099e8; msToken=AT5NC3AKRAYEdyfRmc_tG4hz-_FY_9Fo92wvnGtFj8s0_--rtv7r43z_ELwuGZHqvlNDoh7ykYADNE52OwSHFQmR0Q2A1hCmrMpj44W2WhiKWVkX89_3zBfCdAVZyWVIGm6e; msToken=KKGHGFc_QjBmz-rFNIqmeUe2HqFnssyFcWqMUrniBSzEqGiBPUbYG24WmYnDJ76Ap-yzYOkbPvkiPJhc39saYH9dPpMloOhgyeLzIuJCeN_51OcMmj-taVK2v8ptQEyf4058_VZNuHe52rsJ_wo=' \
+  -H 'Pragma: no-cache' \
+  -H 'Referer: https://ads.tiktok.com/business/creativecenter/topads/7217202900710850561/pc/en?countryCode=US&from=001110&period=30' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 OPR/112.0.0.0' \
+  -H 'anonymous-user-id: d3e22bbe-5af5-4fe6-9242-cdbf43cbdc34' \
+  -H 'lang: en' \
+  -H 'sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Opera";v="112"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'timestamp: 1723430411' \
+  -H 'user-sign: 7a3b3a50bbe69b54' \
+  -H 'web-id: 7402066609647650305'
+
+  -------------------------------------------------
+
+  GET THE PERCENTILE OF THE GIVEN METRIC COMPARED TO INDUSTRY AVG
+
+  curl 'https://ads.tiktok.com/creative_radar_api/v1/top_ads/percentile?metric=ctr_percentile&material_id=7217202900710850561&period_type=180' \
+  -H 'Accept: application/json, text/plain, */*' \
+  -H 'Accept-Language: en-US,en;q=0.9' \
+  -H 'Cache-Control: no-cache' \
+  -H 'Connection: keep-alive' \
+  -H 'Cookie: locale=en-US; _tt_enable_cookie=1; _ttp=2Yy6Dhda4wcei6L9cIr8GXczqLX; lang_type=en; passport_csrf_token=0d0bbe3d20fc80d551908afb4ec264f0; passport_csrf_token_default=0d0bbe3d20fc80d551908afb4ec264f0; s_v_web_id=verify_lzqcxml6_LMSPBqPc_1NSL_4Hn0_99cu_D2HVK59jqZfi; passport_auth_status_ads=1d30e9754270cef3ba893a449b36f3b1%2C; passport_auth_status_ss_ads=1d30e9754270cef3ba893a449b36f3b1%2C; sso_uid_tt_ads=5d0e6baf57edbf89f3c9974b6545e13b58f1468f03d784aac3c5dfd0e741c135; sso_uid_tt_ss_ads=5d0e6baf57edbf89f3c9974b6545e13b58f1468f03d784aac3c5dfd0e741c135; sso_user_ads=7fe73f0b607d1beb52b1268fc8e2d48d; sso_user_ss_ads=7fe73f0b607d1beb52b1268fc8e2d48d; sid_ucp_sso_v1_ads=1.0.0-KGFjNDIzMWMxNDc4OTQyZTA1ZjliYzgwODBhMDZjZWM4Njg2YjdlODYKFwiRiI_cupqmlWYQiN_ltQYYzCQ4CEASEAMaA3NnMSIgN2ZlNzNmMGI2MDdkMWJlYjUyYjEyNjhmYzhlMmQ0OGQ; ssid_ucp_sso_v1_ads=1.0.0-KGFjNDIzMWMxNDc4OTQyZTA1ZjliYzgwODBhMDZjZWM4Njg2YjdlODYKFwiRiI_cupqmlWYQiN_ltQYYzCQ4CEASEAMaA3NnMSIgN2ZlNzNmMGI2MDdkMWJlYjUyYjEyNjhmYzhlMmQ0OGQ; odin_tt=cd9462fbc97de0631280afd7203046f1163657bbd4df17c00a3717bb241b93c58764f287105325963ab13b176c66654d6409fde1f80b00ab704ae960b7819bda; sid_guard_ads=8a2e3b5f7ebe3239d69521d567757479%7C1723428744%7C5184000%7CFri%2C+11-Oct-2024+02%3A12%3A24+GMT; uid_tt_ads=6572bc2d6505e83b1402be938a3984805e96cabbdcb1d9f2056b4dc27d5c46f2; uid_tt_ss_ads=6572bc2d6505e83b1402be938a3984805e96cabbdcb1d9f2056b4dc27d5c46f2; sid_tt_ads=8a2e3b5f7ebe3239d69521d567757479; sessionid_ads=8a2e3b5f7ebe3239d69521d567757479; sessionid_ss_ads=8a2e3b5f7ebe3239d69521d567757479; sid_ucp_v1_ads=1.0.0-KDVlMDE1MGQ1OGVhMzg1NzRlOTFkZGMzOWI5ZmM4NTJhNTI2NTMzNmMKGQiRiI_cupqmlWYQiN_ltQYYzCQgDDgIQBIQAxoDc2cxIiA4YTJlM2I1ZjdlYmUzMjM5ZDY5NTIxZDU2Nzc1NzQ3OQ; ssid_ucp_v1_ads=1.0.0-KDVlMDE1MGQ1OGVhMzg1NzRlOTFkZGMzOWI5ZmM4NTJhNTI2NTMzNmMKGQiRiI_cupqmlWYQiN_ltQYYzCQgDDgIQBIQAxoDc2cxIiA4YTJlM2I1ZjdlYmUzMjM5ZDY5NTIxZDU2Nzc1NzQ3OQ; i18next=en; cookie-consent={%22ga%22:false%2C%22af%22:false%2C%22fbp%22:false%2C%22lip%22:false%2C%22bing%22:false%2C%22ttads%22:false%2C%22reddit%22:false%2C%22hubspot%22:false%2C%22version%22:%22v10%22}; ttwid=1%7ClLNh7DslNZRR1AsARYWah8TQPImLqKImAkb5hIHNmdI%7C1723430357%7C730ad0e599d30f4bd3186ab2d69942b4c8ef07d5e0d35a453f0c4bc7b59099e8; msToken=AT5NC3AKRAYEdyfRmc_tG4hz-_FY_9Fo92wvnGtFj8s0_--rtv7r43z_ELwuGZHqvlNDoh7ykYADNE52OwSHFQmR0Q2A1hCmrMpj44W2WhiKWVkX89_3zBfCdAVZyWVIGm6e; msToken=KKGHGFc_QjBmz-rFNIqmeUe2HqFnssyFcWqMUrniBSzEqGiBPUbYG24WmYnDJ76Ap-yzYOkbPvkiPJhc39saYH9dPpMloOhgyeLzIuJCeN_51OcMmj-taVK2v8ptQEyf4058_VZNuHe52rsJ_wo=' \
+  -H 'Pragma: no-cache' \
+  -H 'Referer: https://ads.tiktok.com/business/creativecenter/topads/7217202900710850561/pc/en?countryCode=US&from=001110&period=30' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 OPR/112.0.0.0' \
+  -H 'anonymous-user-id: d3e22bbe-5af5-4fe6-9242-cdbf43cbdc34' \
+  -H 'lang: en' \
+  -H 'sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Opera";v="112"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'timestamp: 1723430411' \
+  -H 'user-sign: 7a3b3a50bbe69b54' \
+  -H 'web-id: 7402066609647650305'
+
+  ---------------------------------------------------------------------
+
+  GETS AI VIDEO ANALYSIS DATA, INCLUDING TRANSCRIPT, AD ANGLE, AND VSL FLOW
+
+  curl 'https://ads.tiktok.com/creative_radar_api/v1/top_ads/v2/detail_analysis?material_id=7217202900710850561' \
+  -H 'Accept: application/json, text/plain, */*' \
+  -H 'Accept-Language: en-US,en;q=0.9' \
+  -H 'Cache-Control: no-cache' \
+  -H 'Connection: keep-alive' \
+  -H 'Cookie: locale=en-US; _tt_enable_cookie=1; _ttp=2Yy6Dhda4wcei6L9cIr8GXczqLX; lang_type=en; passport_csrf_token=0d0bbe3d20fc80d551908afb4ec264f0; passport_csrf_token_default=0d0bbe3d20fc80d551908afb4ec264f0; s_v_web_id=verify_lzqcxml6_LMSPBqPc_1NSL_4Hn0_99cu_D2HVK59jqZfi; passport_auth_status_ads=1d30e9754270cef3ba893a449b36f3b1%2C; passport_auth_status_ss_ads=1d30e9754270cef3ba893a449b36f3b1%2C; sso_uid_tt_ads=5d0e6baf57edbf89f3c9974b6545e13b58f1468f03d784aac3c5dfd0e741c135; sso_uid_tt_ss_ads=5d0e6baf57edbf89f3c9974b6545e13b58f1468f03d784aac3c5dfd0e741c135; sso_user_ads=7fe73f0b607d1beb52b1268fc8e2d48d; sso_user_ss_ads=7fe73f0b607d1beb52b1268fc8e2d48d; sid_ucp_sso_v1_ads=1.0.0-KGFjNDIzMWMxNDc4OTQyZTA1ZjliYzgwODBhMDZjZWM4Njg2YjdlODYKFwiRiI_cupqmlWYQiN_ltQYYzCQ4CEASEAMaA3NnMSIgN2ZlNzNmMGI2MDdkMWJlYjUyYjEyNjhmYzhlMmQ0OGQ; ssid_ucp_sso_v1_ads=1.0.0-KGFjNDIzMWMxNDc4OTQyZTA1ZjliYzgwODBhMDZjZWM4Njg2YjdlODYKFwiRiI_cupqmlWYQiN_ltQYYzCQ4CEASEAMaA3NnMSIgN2ZlNzNmMGI2MDdkMWJlYjUyYjEyNjhmYzhlMmQ0OGQ; odin_tt=cd9462fbc97de0631280afd7203046f1163657bbd4df17c00a3717bb241b93c58764f287105325963ab13b176c66654d6409fde1f80b00ab704ae960b7819bda; sid_guard_ads=8a2e3b5f7ebe3239d69521d567757479%7C1723428744%7C5184000%7CFri%2C+11-Oct-2024+02%3A12%3A24+GMT; uid_tt_ads=6572bc2d6505e83b1402be938a3984805e96cabbdcb1d9f2056b4dc27d5c46f2; uid_tt_ss_ads=6572bc2d6505e83b1402be938a3984805e96cabbdcb1d9f2056b4dc27d5c46f2; sid_tt_ads=8a2e3b5f7ebe3239d69521d567757479; sessionid_ads=8a2e3b5f7ebe3239d69521d567757479; sessionid_ss_ads=8a2e3b5f7ebe3239d69521d567757479; sid_ucp_v1_ads=1.0.0-KDVlMDE1MGQ1OGVhMzg1NzRlOTFkZGMzOWI5ZmM4NTJhNTI2NTMzNmMKGQiRiI_cupqmlWYQiN_ltQYYzCQgDDgIQBIQAxoDc2cxIiA4YTJlM2I1ZjdlYmUzMjM5ZDY5NTIxZDU2Nzc1NzQ3OQ; ssid_ucp_v1_ads=1.0.0-KDVlMDE1MGQ1OGVhMzg1NzRlOTFkZGMzOWI5ZmM4NTJhNTI2NTMzNmMKGQiRiI_cupqmlWYQiN_ltQYYzCQgDDgIQBIQAxoDc2cxIiA4YTJlM2I1ZjdlYmUzMjM5ZDY5NTIxZDU2Nzc1NzQ3OQ; i18next=en; cookie-consent={%22ga%22:false%2C%22af%22:false%2C%22fbp%22:false%2C%22lip%22:false%2C%22bing%22:false%2C%22ttads%22:false%2C%22reddit%22:false%2C%22hubspot%22:false%2C%22version%22:%22v10%22}; msToken=AT5NC3AKRAYEdyfRmc_tG4hz-_FY_9Fo92wvnGtFj8s0_--rtv7r43z_ELwuGZHqvlNDoh7ykYADNE52OwSHFQmR0Q2A1hCmrMpj44W2WhiKWVkX89_3zBfCdAVZyWVIGm6e; msToken=CJUGNCiHWCY2kZ0rF5tS00WDAx_sSktCDZCWxsL2G-z0ZXrE5PEGJ_QaEhy7-Re6DrZQY82-dp4Gq9nZfmoMnAxCSld0QG1gqedVWPZC-FBLiTBvBn_I1svJV3r3_smDjWvX2Z1j4WZ36-2dpuE=; ttwid=1%7ClLNh7DslNZRR1AsARYWah8TQPImLqKImAkb5hIHNmdI%7C1723430413%7Cedbac613e0068c6cad9219eaa8077d75de18ee6b1b954eadf78a1b848eb480d0' \
+  -H 'Pragma: no-cache' \
+  -H 'Referer: https://ads.tiktok.com/business/creativecenter/topads/7217202900710850561/pc/en?countryCode=US&from=001110&period=30' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 OPR/112.0.0.0' \
+  -H 'lang: en' \
+  -H 'sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Opera";v="112"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'timestamp: 1723430414' \
+  -H 'user-sign: bf67b1f5c473e40d' \
+  -H 'web-id: 7402066609647650305'
+
+  ------------------------------------------------------------
+
+  

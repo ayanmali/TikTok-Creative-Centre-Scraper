@@ -12,6 +12,8 @@ def search_all_ads():
     # objectives = ["Traffic", "App Installs", "Conversions", "Video Views", "Reach", "Lead Generation", "Product sales"]
     # Objective number corresponds to the 1-based index of the objective in the objectives list
     # objective = "3"
+    # Corresponds to conversions, video views, reach, and product sales
+    # objective = "3,4,15,5"
     objective = "7,3"
     period = 30
     page = 1
