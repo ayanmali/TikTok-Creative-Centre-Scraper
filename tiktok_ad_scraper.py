@@ -1,6 +1,8 @@
 import requests
 import json
 
+filename = "tiktok-ads-data.json"
+
 """
 Searches TikTok Top Ads Dashboard for all available ads with the given search parameters.
 """
