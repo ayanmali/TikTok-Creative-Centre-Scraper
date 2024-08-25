@@ -40,6 +40,9 @@ def extract_json():
     # Create a DataFrame from the flattened list
     df = pd.DataFrame(flattened_materials)
 
+    # Cleans the DataFrame so the data is more usable
+    df = clean_data(df)
+
     """
     ads = data['data']['materials']
 
@@ -56,5 +59,14 @@ def extract_json():
         ad_duration = ad['video_info']['duration']
         ad_video_link = ad['video_info']['video_url']['720p']
     """
+
+"""
+Cleans the given DataFrame to remove unnecessary data and reformat desired data into a more usable format.
+"""
+def clean_data(df):
+    # adjust campiagn objective column
+    # adjust industry key column - is there a way to convert this into the name and not just the ID?
+    # remove extra columns
+    pass
 
 extract_json()
