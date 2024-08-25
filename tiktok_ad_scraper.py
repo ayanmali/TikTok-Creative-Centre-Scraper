@@ -1,6 +1,7 @@
 import requests
 import json
 import time
+import urllib.parse
 from request_cookie import tt_cookie
 
 filename = "tiktok-ads-data.json"
@@ -31,15 +32,16 @@ def search_all_ads():
     country = "US"
 
     # querystring = {"objective":f"{objective}","period":f"{period}","industry":"22000000000,16000000000,12000000000,14000000000,24000000000,30000000000,10000000000,13000000000,27000000000,29000000000,21000000000,18000000000,26000000000,23000000000,19000000000,28000000000,15000000000,17000000000,11000000000","page":f"{page}","limit":f"{limit}","order_by":f"{order_by}","country_code":f"{country}"}
-    querystring = {"page":f"{page}", "limit":f"{limit}", "keyword":query, "period":f"{period}", "country_code":f"{country}", "industry":industries, "objective":f"{objective}", "order_by":f"{order_by}"}
+    querystring = {"page":f"{page}", "limit":f"{limit}", "keyword":query, "period":f"{period}", "country_code":f"{country}", "industry":f"{industries}", "objective":f"{objective}", "order_by":f"{order_by}"}
 
     # Setting the timestamp for the request header
     timestamp = int(time.time())
 
-    countries_referer_query = country.replace(",", "%2C")
-    objective_referer_query = objective.replace(",", "%2C")
-    _ = industries.replace("0", "")
-    industries_referer_query = _.replace(",", "%2C")
+    # Setting URL queries for the referer header
+    countries_referer_query = urllib.parse.quote(country)
+    objective_referer_query = urllib.parse.quote(objective)
+    industries_referer_query = urllib.parse.quote(industries)
+    industries_referer_query = industries_referer_query.replace("0", "")
 
     payload = ""
     headers = {
@@ -54,16 +56,17 @@ def search_all_ads():
         "host": "ads.tiktok.com",
         "lang": "en",
         "pragma": "no-cache",
-        "priority": "u=1, i",
+        # "priority": "u=1, i",
         #"referer": f"https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en?period={period}&region={countries_referer_query}&industry={industries_referer_query}&object={objective_referer_query}",
         "referer": f"https://ads.tiktok.com/business/creativecenter/inspiration/topads/pad/en?period={period}&region={countries_referer_query}&industry={industries_referer_query}&object={objective_referer_query}",
-        "sec-ch-ua": "\"Not)A;Brand\";v=\"99\", \"Brave\";v=\"127\", \"Chromium\";v=\"127\"",
+        "sec-ch-ua": "\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Opera\";v=\"112\"",
+        # "sec-ch-ua": "\"Not)A;Brand\";v=\"99\", \"Brave\";v=\"127\", \"Chromium\";v=\"127\"",
         "sec-ch-ua-mobile": "?0",
         "sec-ch-ua-platform": "\"Windows\"",
         "sec-fetch-dest": "empty",
         "sec-fetch-mode": "cors",
         "sec-fetch-site": "same-origin",
-        "sec-gpc": "1",
+        # "sec-gpc": "1",
         "timestamp": f"{timestamp}",
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
         "user-sign": "915f03facb00ec0f",
