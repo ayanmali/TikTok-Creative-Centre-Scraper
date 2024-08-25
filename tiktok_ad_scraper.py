@@ -11,37 +11,43 @@ cookie = tt_cookie
 Searches TikTok Top Ads Dashboard for all available ads with the given search parameters.
 """
 def search_all_ads():
+    print("Preparing request...")
     url = "https://ads.tiktok.com/creative_radar_api/v1/top_ads/v2/list"
 
     # Defining search parameters; multiple selections for the same parameter are included in the same string separated by a comma and no space
     query = ""
-    # objectives = ["Traffic", "App Installs", "Conversions", "Video Views", "Reach", "Lead Generation", "Product sales"]
+    # objectives = {"Traffic" : 1, "App Installs" : 2, "Conversions" : 3, "Video Views" : 4, "Reach" : 5, "Lead Generation" : 8, "Product sales" : 14}
     # Objective number corresponds to the 1-based index of the objective in the objectives list
     # objective = "3"
     # Corresponds to conversions, video views, reach, and product sales
-    objective = "3,4,15,5"
+    objective = "3,4,14,5"
     # objective = "7,3"
     period = 30
     page = 1
     limit = 20
     # Non-app/game related ads
     industries = "22000000000,16000000000,12000000000,14000000000,24000000000,30000000000,10000000000,13000000000,27000000000,29000000000,21000000000,18000000000,26000000000,23000000000,19000000000,28000000000,15000000000,17000000000,11000000000"
-    # for_you, reach, ctr, play_2s_rate, play_6s_rate, cvr, likes
+    # One of: for_you, reach, ctr, play_2s_rate, play_6s_rate, cvr, likes
     order_by = "for_you"
     # UK = GB, Canada = CA, Australia = AU
     country = "US"
 
-    # querystring = {"objective":f"{objective}","period":f"{period}","industry":"22000000000,16000000000,12000000000,14000000000,24000000000,30000000000,10000000000,13000000000,27000000000,29000000000,21000000000,18000000000,26000000000,23000000000,19000000000,28000000000,15000000000,17000000000,11000000000","page":f"{page}","limit":f"{limit}","order_by":f"{order_by}","country_code":f"{country}"}
-    querystring = {"page":f"{page}", "limit":f"{limit}", "keyword":query, "period":f"{period}", "country_code":f"{country}", "industry":f"{industries}", "objective":f"{objective}", "order_by":f"{order_by}"}
+    querystring = {"objective":f"{objective}","period":f"{period}","industry":f"{industries}","page":f"{page}","limit":f"{limit}","order_by":f"{order_by}","country_code":f"{country}"}
+    # querystring = {"page":f"{page}", "limit":f"{limit}", "keyword":query, "period":f"{period}", "country_code":f"{country}", "industry":f"{industries}", "objective":f"{objective}", "order_by":f"{order_by}"}
+
+    print(f"Query string:\n{querystring}")
 
     # Setting the timestamp for the request header
     timestamp = int(time.time())
+    print(f"Timestamp:\n{timestamp}")
 
     # Setting URL queries for the referer header
     countries_referer_query = urllib.parse.quote(country)
     objective_referer_query = urllib.parse.quote(objective)
     industries_referer_query = urllib.parse.quote(industries)
     industries_referer_query = industries_referer_query.replace("0", "")
+
+    print(f"Formatted URL parameters:\nCountry:{countries_referer_query}\nObjective:{objective_referer_query}\nIndustries:{industries_referer_query}")
 
     payload = ""
     headers = {
@@ -50,7 +56,7 @@ def search_all_ads():
         "accept": "application/json, text/plain, */*",
         "accept-encoding": "gzip, deflate, br, zstd",
         "accept-language": "en-US,en;q=0.8",
-        "anonymous-user-id": "d3e22bbe-5af5-4fe6-9242-cdbf43cbdc34",
+        # "anonymous-user-id": "d3e22bbe-5af5-4fe6-9242-cdbf43cbdc34",
         "cache-control": "no-cache",
         "connection":"keep-alive",
         "host": "ads.tiktok.com",
@@ -68,11 +74,13 @@ def search_all_ads():
         "sec-fetch-site": "same-origin",
         # "sec-gpc": "1",
         "timestamp": f"{timestamp}",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
-        "user-sign": "915f03facb00ec0f",
-        "web-id": "7361860423677838864"
+        # "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 OPR/112.0.0.0",
+        # "user-sign": "915f03facb00ec0f",
+        "user-sign": "6d0d245d44f50398",
+        #"web-id": "7361860423677838864"
+        "web-id": "7402066609647650305"
     }
-
     return requests.request("GET", url, data=payload, headers=headers, params=querystring)
 
 """
@@ -120,14 +128,19 @@ def get_analysis_data():
     pass
 
 def main():
+    print("Getting response...")
     response = search_all_ads()
+    print(f"Response: {response}")
 
+    print("Converting to JSON and saving...")
     # Converting the string into valid JSON
     response_json = json.loads(response.text)
 
     # Saving the response data as a JSON file for parsing
     with open('tiktok-ads-data.json', 'w', encoding='utf-8') as f:
         json.dump(response_json, f, ensure_ascii=False, indent=4)
+
+    print("Data exported")
 
 if __name__ == "__main__":
     main()
