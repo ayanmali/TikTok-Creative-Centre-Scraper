@@ -7,6 +7,9 @@ from request_cookie import tt_cookie
 filename = "tiktok-ads-data.json"
 cookie = tt_cookie
 
+def get_ttwid():
+    
+
 """
 Searches TikTok Top Ads Dashboard for all available ads with the given search parameters.
 """
@@ -64,7 +67,7 @@ def search_all_ads():
         "pragma": "no-cache",
         # "priority": "u=1, i",
         #"referer": f"https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en?period={period}&region={countries_referer_query}&industry={industries_referer_query}&object={objective_referer_query}",
-        "referer": f"https://ads.tiktok.com/business/creativecenter/inspiration/topads/pad/en?period={period}&region={countries_referer_query}&industry={industries_referer_query}&object={objective_referer_query}",
+        "referer": f"https://ads.tiktok.com/business/creativecenter/inspiration/topads/mobile/en?period={period}&region={countries_referer_query}&industry={industries_referer_query}&object={objective_referer_query}",
         "sec-ch-ua": "\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Opera\";v=\"112\"",
         # "sec-ch-ua": "\"Not)A;Brand\";v=\"99\", \"Brave\";v=\"127\", \"Chromium\";v=\"127\"",
         "sec-ch-ua-mobile": "?0",
