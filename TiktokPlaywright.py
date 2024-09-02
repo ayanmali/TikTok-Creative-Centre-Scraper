@@ -15,13 +15,15 @@ def run(playwright: Playwright) -> None:
     # Clicking the login button
     page.get_by_test_id("cc_header_login").click()
     time.sleep(5)
-    #
-
+    
+    # Logging in
     page.get_by_text("Log in with phone/email").click()
-    page.get_by_placeholder("Enter your email address").click()
-    page.get_by_placeholder("Enter your email address").fill(email)
-    page.get_by_placeholder("Enter your password").click()
-    page.get_by_placeholder("Enter your password").fill(password)
+    email_form = page.locator("#TikTok_Ads_SSO_Login_Email_Input")
+    email_form.click()
+    email_form.fill(email)
+    password_form = page.locator("#TikTok_Ads_SSO_Login_Pwd_Input")
+    password_form.click()
+    password_form.fill(password)
     page.click("#TikTok_Ads_SSO_Login_Btn")
     
     time.sleep(5)
