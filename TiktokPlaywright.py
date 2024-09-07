@@ -1,37 +1,50 @@
 from playwright.sync_api import Playwright, sync_playwright
 import sys
 sys.path.insert(1, 'c:/Users/ayan_/Desktop/Desktop/Coding/Cursor Workspace/Scrapers')
-from tiktok_credentials import email, password
+# from tiktok_credentials import email, password
 import time
 
+# User agent string
+USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+
+# Declaring variables to store request cookies
+user_sign = ""
+timestamp = ""
+web_id = ""
+
+# Main function
 def run(playwright: Playwright) -> None:
-    main_url = "https://ads.tiktok.com/business/creativecenter/pad/en"
-    browser = playwright.chromium.launch(headless=False)
-    context = browser.new_context(ignore_https_errors=True, user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 Edg/116.0.1938.81")
+    main_url = "https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en"
+    browser = playwright.chromium.launch(headless=True)
+    context = browser.new_context(user_agent=USER_AGENT)
     page = context.new_page()
 
-    # Navigating to the page
-    page.goto(main_url)
-    # Clicking the login button
-    page.get_by_test_id("cc_header_login").click()
-    time.sleep(5)
-    
-    # Logging in
-    page.get_by_text("Log in with phone/email").click()
-    email_form = page.locator("#TikTok_Ads_SSO_Login_Email_Input")
-    email_form.click()
-    email_form.fill(email)
-    password_form = page.locator("#TikTok_Ads_SSO_Login_Pwd_Input")
-    password_form.click()
-    password_form.fill(password)
-    page.click("#TikTok_Ads_SSO_Login_Btn")
-    
-    time.sleep(5)
+    # Executes for every request that is sent from the browser
+    def handle_request(request):
+        # Specifically looking for the access_token request
+        if "access_token" in request.url:
+            # print(request.headers)
 
-    # ---------------------
+            # Storing those request headers
+            global user_sign, timestamp, web_id
+            user_sign = request.headers['user-sign']
+            timestamp = request.headers['timestamp']
+            web_id = request.headers['web-id']
+            print("Cookies stored")
+
+    page.on('request', handle_request)
+
+    print("Grabbing cookies...")
+
+    # # Navigating to the page
+    page.goto(main_url)
+    time.sleep(10)
+    
+    # Closing the browser
     context.close()
     browser.close()
 
-
-with sync_playwright() as playwright:
-    run(playwright)
+def get_cookies():
+    with sync_playwright() as playwright:
+        run(playwright)
+        print(user_sign, timestamp, web_id)
