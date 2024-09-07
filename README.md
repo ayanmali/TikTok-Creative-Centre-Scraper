@@ -10,7 +10,7 @@
 - Hypothesis:
     For a given search, there are a series of requests needed to get all the data, with the page number being different. The limit parameter is 3 for the first request and 20 for all subsequent requests. 
     The first request has an additional header than subsequent requests. Can I simply omit this header after making the request?
-
+- Do we need search-id in the querystring for searching for keywords?
 
 ## UX
 - build functionality for selecting industries

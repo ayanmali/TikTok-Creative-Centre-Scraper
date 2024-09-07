@@ -18,7 +18,7 @@ def search_all_ads():
 
     # Defining search parameters; multiple selections for the same parameter are included in the same string separated by a comma and no space
     
-    # query = "berberine"
+    query = ""
     # objectives = {"Traffic" : 1, "App Installs" : 2, "Conversions" : 3, "Video Views" : 4, "Reach" : 5, "Lead Generation" : 8, "Product sales" : 14}
     # Objective number corresponds to the 1-based index of the objective in the objectives list
     # objective = "3"
@@ -35,26 +35,40 @@ def search_all_ads():
     # UK = GB, Canada = CA, Australia = AU
     country = "US"
 
-    # Defining the request payload
-    querystring = {"objective":f"{objective}","period":f"{period}","industry":f"{industries}","page":f"{page}","limit":f"{limit}","order_by":f"{order_by}","country_code":f"{country}"}
-    # querystring = {"page":f"{page}", "limit":f"{limit}", "keyword":query, "period":f"{period}", "country_code":f"{country}", "industry":f"{industries}", "objective":f"{objective}", "order_by":f"{order_by}"}
+    # Initializing the request payload
+    querystring = {"period":f"{period}","page":f"{page}","limit":f"{limit}","order_by":f"{order_by}","country_code":f"{country}"}
+    # Initializing the referer header URL and formatting the country query
+    countries_referer_query = urllib.parse.quote(country)
+    referer_url = f"https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en?period={period}&region={countries_referer_query}"
+
+    # Setting the querystring and adjusting the referer header URL based on search parameters
+    if industries != "":
+        querystring["industry"] = industries
+        industries_referer_query = urllib.parse.quote(industries)
+        industries_referer_query = industries_referer_query.replace("0", "")
+        referer_url += f"&industry={industries_referer_query}"
+    
+    if query != "":
+        querystring["keyword"] = query.replace(" ", "+")
+
+    if objective != "":
+        querystring["objective"] = objective
+        objective_referer_query = urllib.parse.quote(objective)
+        referer_url += f"&object={objective_referer_query}"
 
     print(f"Query string:\n{querystring}")
+    print(f"Formatted Referer URL:\n{referer_url}")
 
     # Setting the timestamp for the request header
     # timestamp = int(time.time())
     # print(f"Timestamp:\n{timestamp}")
-
-    # Setting URL queries for the referer header
-    countries_referer_query = urllib.parse.quote(country)
-    objective_referer_query = urllib.parse.quote(objective)
-    industries_referer_query = urllib.parse.quote(industries)
-    industries_referer_query = industries_referer_query.replace("0", "")
-
-    print(f"Formatted URL parameters:\nCountry:{countries_referer_query}\nObjective:{objective_referer_query}\nIndustries:{industries_referer_query}")
-
+    
+    # No JSON payload needed for this request
     payload = ""
+
+    # Getting request header cookies
     user_sign, timestamp, web_id = get_cookies()
+    # Defining request headers
     headers = {
         #"cookie": "uid_tt=1af43bcda1ad9ca76b382215a3b315812abb87f1f253e1642dec7a6bbd74ca8e; uid_tt_ss=1af43bcda1ad9ca76b382215a3b315812abb87f1f253e1642dec7a6bbd74ca8e; sid_tt=334d748c9c6953b952fdf300a5ed1910; sessionid=334d748c9c6953b952fdf300a5ed1910; sessionid_ss=334d748c9c6953b952fdf300a5ed1910; tt-target-idc=useast1a; store-idc=maliva; store-country-code=ca; store-country-code-src=uid; csrftoken=; _ttp=2fbXIAXnpqG7cu2X6RcPV2M2jja; sid_guard_tiktokseller=5061356a12c46b07586bf2c653983162%7C1714070716%7C5180986%7CMon%2C+24-Jun-2024+17%3A55%3A02+GMT; tt_chain_token=SOCsziXETD9xZYbyElnk2Q==; sid_guard=334d748c9c6953b952fdf300a5ed1910%7C1718070575%7C15552000%7CSun%2C+08-Dec-2024+01%3A49%3A35+GMT; sid_ucp_v1=1.0.0-KDY0MDY3ZjMxMTIxOGIyNmM2MjE3NTRlMTU0ZWZiZjJjN2ZhNDQ2YjMKIAiGiIiMq5Sp7GIQr9qeswYYswsgDDDdyeKWBjgEQOoHEAMaBm1hbGl2YSIgMzM0ZDc0OGM5YzY5NTNiOTUyZmRmMzAwYTVlZDE5MTA; ssid_ucp_v1=1.0.0-KDY0MDY3ZjMxMTIxOGIyNmM2MjE3NTRlMTU0ZWZiZjJjN2ZhNDQ2YjMKIAiGiIiMq5Sp7GIQr9qeswYYswsgDDDdyeKWBjgEQOoHEAMaBm1hbGl2YSIgMzM0ZDc0OGM5YzY5NTNiOTUyZmRmMzAwYTVlZDE5MTA; tta_attr_id_mirror=0.1718072224.7379064015105835025; lang_type=en; i18next=en; passport_csrf_token=60384911ca3efdfed5c0e6392ab5fc52; passport_csrf_token_default=60384911ca3efdfed5c0e6392ab5fc52; s_v_web_id=verify_lzppm0or_G8civZcL_vqbq_4Msu_AjDC_LvRn73f6DpyT; passport_auth_status_ads=7858c860742e41c1df102c137d23e1ae%2C; passport_auth_status_ss_ads=7858c860742e41c1df102c137d23e1ae%2C; sso_uid_tt_ads=5fbe9ef4c6bb153d8229fa26d749f932ebc9d7c9785e5c21caee0fc01a821133; sso_uid_tt_ss_ads=5fbe9ef4c6bb153d8229fa26d749f932ebc9d7c9785e5c21caee0fc01a821133; sso_user_ads=68d3d6f6b1347989255ebcd48eef1009; sso_user_ss_ads=68d3d6f6b1347989255ebcd48eef1009; sid_ucp_sso_v1_ads=1.0.0-KDI0ZDQ4MDMzY2U0NzZkMWRlYzRjYWQ2OTIyMzdkMmFjODhiZmQyNmEKHwiRiI_cupqmlWYQ-K3jtQYYzCQgDDD2saqxBjgIQBIQAxoDc2cxIiA2OGQzZDZmNmIxMzQ3OTg5MjU1ZWJjZDQ4ZWVmMTAwOQ; ssid_ucp_sso_v1_ads=1.0.0-KDI0ZDQ4MDMzY2U0NzZkMWRlYzRjYWQ2OTIyMzdkMmFjODhiZmQyNmEKHwiRiI_cupqmlWYQ-K3jtQYYzCQgDDD2saqxBjgIQBIQAxoDc2cxIiA2OGQzZDZmNmIxMzQ3OTg5MjU1ZWJjZDQ4ZWVmMTAwOQ; odin_tt=9618a636410707ea4a68a90b4253fb88683a5d559076a769e7a6760d8617c6a0e0dee8b721ef9a53d7f4ae114f4e3caa754695d77703633d82aa9ee4fdba1039; sid_guard_ads=b4529da93adf3b15d9f16040666207c4%7C1723389690%7C5183998%7CThu%2C+10-Oct-2024+15%3A21%3A28+GMT; uid_tt_ads=7eb82d72e3345c7a30b179d4b7279d7fcebbdfaa501038bba2083da7c93a951e; uid_tt_ss_ads=7eb82d72e3345c7a30b179d4b7279d7fcebbdfaa501038bba2083da7c93a951e; sid_tt_ads=b4529da93adf3b15d9f16040666207c4; sessionid_ads=b4529da93adf3b15d9f16040666207c4; sessionid_ss_ads=b4529da93adf3b15d9f16040666207c4; sid_ucp_v1_ads=1.0.0-KDEzNjRjOWQ3YjI4N2M5N2NhMTRkZGM4NDhkMjA4NTQ0MzAyM2UxZTMKGQiRiI_cupqmlWYQ-q3jtQYYzCQgDDgIQBIQAxoDc2cxIiBiNDUyOWRhOTNhZGYzYjE1ZDlmMTYwNDA2NjYyMDdjNA; ssid_ucp_v1_ads=1.0.0-KDEzNjRjOWQ3YjI4N2M5N2NhMTRkZGM4NDhkMjA4NTQ0MzAyM2UxZTMKGQiRiI_cupqmlWYQ-q3jtQYYzCQgDDgIQBIQAxoDc2cxIiBiNDUyOWRhOTNhZGYzYjE1ZDlmMTYwNDA2NjYyMDdjNA; ttwid=1%7CE390XvNLg2m7_PxWQ6J6DBG6xNq9NZXxWTM5NCKNmqo%7C1723391746%7C01dff39ac08b5ca06719457f01e372c9fa0915020458a92d92a184fd55d2592e; msToken=9vAQ2Zwx-wnSrmE3b76xRO5cWNBrBlvq217VwXcpYb3j29kpEK8UGWilkfl4FXxU2NPUQoQLKvdlAfxiYY8IOgDE-akRuE_kYGQ5i3G3pjQDqaQ0xjZyIifBMH8=; msToken=9vAQ2Zwx-wnSrmE3b76xRO5cWNBrBlvq217VwXcpYb3j29kpEK8UGWilkfl4FXxU2NPUQoQLKvdlAfxiYY8IOgDE-akRuE_kYGQ5i3G3pjQDqaQ0xjZyIifBMH8=",
         # "cookie": cookie,
@@ -69,7 +83,7 @@ def search_all_ads():
         "pragma": "no-cache",
         "priority": "u=1, i",
         #"referer": f"https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en?period={period}&region={countries_referer_query}&industry={industries_referer_query}&object={objective_referer_query}",
-        "referer": f"https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en?period={period}&region={countries_referer_query}&industry={industries_referer_query}&object={objective_referer_query}",
+        "referer": referer_url,
         "sec-ch-ua": "\"Not)A;Brand\";v=\"99\", \"Brave\";v=\"127\", \"Chromium\";v=\"127\"",
         "sec-ch-ua-mobile": "?0",
         "sec-ch-ua-platform": "\"Windows\"",
@@ -82,6 +96,7 @@ def search_all_ads():
         "user-sign": user_sign,
         "web-id": web_id
     }
+
     return requests.request("GET", url, data=payload, headers=headers, params=querystring)
 
 """
