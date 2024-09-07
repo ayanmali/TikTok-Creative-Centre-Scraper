@@ -138,9 +138,67 @@ def search_industry():
     return requests.request("GET", url, data=payload, headers=headers, params=querystring)
 
 """
-Retrieves data from the analysis page of each ad retrieved from a search.
+Retrieves general data from the analysis page of each ad retrieved from a search.
 """
-def get_analysis_data():
+def get_analysis_data(period, countries, id):
+    url = "https://ads.tiktok.com/creative_radar_api/v1/top_ads/v2/detail"
+
+    # id = "7301843916143656961"
+    querystring = {"material_id":id}
+
+    # No JSON payload needed for this request
+    payload = ""
+
+    # Getting request header cookies
+    user_sign, timestamp, web_id = get_cookies()
+
+    countries_referer_query = urllib.parse.quote(countries)
+
+    # Defining request headers
+    headers = {
+        "accept": "application/json, text/plain, */*",
+        "accept-language": "en-US,en;q=0.7",
+        "anonymous-user-id": "aaa732cd-360f-4cb5-b5e1-a1afc779ad93",
+        "cache-control": "no-cache",
+        # "cookie": "uid_tt=1af43bcda1ad9ca76b382215a3b315812abb87f1f253e1642dec7a6bbd74ca8e; uid_tt_ss=1af43bcda1ad9ca76b382215a3b315812abb87f1f253e1642dec7a6bbd74ca8e; sid_tt=334d748c9c6953b952fdf300a5ed1910; sessionid=334d748c9c6953b952fdf300a5ed1910; sessionid_ss=334d748c9c6953b952fdf300a5ed1910; tt-target-idc=useast1a; store-idc=maliva; store-country-code=ca; store-country-code-src=uid; csrftoken=; _ttp=2fbXIAXnpqG7cu2X6RcPV2M2jja; sid_guard_tiktokseller=5061356a12c46b07586bf2c653983162%7C1714070716%7C5180986%7CMon%2C+24-Jun-2024+17%3A55%3A02+GMT; tt_chain_token=SOCsziXETD9xZYbyElnk2Q==; sid_guard=334d748c9c6953b952fdf300a5ed1910%7C1718070575%7C15552000%7CSun%2C+08-Dec-2024+01%3A49%3A35+GMT; sid_ucp_v1=1.0.0-KDY0MDY3ZjMxMTIxOGIyNmM2MjE3NTRlMTU0ZWZiZjJjN2ZhNDQ2YjMKIAiGiIiMq5Sp7GIQr9qeswYYswsgDDDdyeKWBjgEQOoHEAMaBm1hbGl2YSIgMzM0ZDc0OGM5YzY5NTNiOTUyZmRmMzAwYTVlZDE5MTA; ssid_ucp_v1=1.0.0-KDY0MDY3ZjMxMTIxOGIyNmM2MjE3NTRlMTU0ZWZiZjJjN2ZhNDQ2YjMKIAiGiIiMq5Sp7GIQr9qeswYYswsgDDDdyeKWBjgEQOoHEAMaBm1hbGl2YSIgMzM0ZDc0OGM5YzY5NTNiOTUyZmRmMzAwYTVlZDE5MTA; tta_attr_id_mirror=0.1718072224.7379064015105835025; lang_type=en; passport_csrf_token=60384911ca3efdfed5c0e6392ab5fc52; passport_csrf_token_default=60384911ca3efdfed5c0e6392ab5fc52; passport_auth_status_ads=df8bd242368b4e657a1145f2783b6a14%2C7858c860742e41c1df102c137d23e1ae; passport_auth_status_ss_ads=df8bd242368b4e657a1145f2783b6a14%2C7858c860742e41c1df102c137d23e1ae; x-creative-csrf-token=sCCyoCeE-ye_vfvsoYKjFVxrDcsuf9Jxsmmw; i18next=en; sso_auth_status_ads=0a5bc7b20af15e6c118f44dd7f2d401c; sso_auth_status_ss_ads=0a5bc7b20af15e6c118f44dd7f2d401c; s_v_web_id=verify_m0l1m423_8dlHPAgZ_ae6W_42Wc_9jz7_YpidsX3uk8zr; d_ticket_ads=3ea0421cb34066ee7b10ee1de56e0eda947fb; odin_tt=4472db4b797433edd7a78527e5a7148c72ec8c526edabf42342f08f70110b51f; ttwid=1%7CE390XvNLg2m7_PxWQ6J6DBG6xNq9NZXxWTM5NCKNmqo%7C1725732701%7C3d81ef3dbab54dead6e3604ffab7100a5b56c5d9846eab25bde179fbda004519; msToken=AhoQtQu7aBvPmSNqj9x40WqhCNbjudN0212B7hFFGnJU4gk4x2asJKhOz74M-dPUhHb5gvtQcP1nDVG0d8ipxRxxNczAl7_WnIyWbGFVPFBQ0ZtpoaEZM_hgRBkQ; msToken=E0EorYmD2ByA-FPj7QokdM-DFwH_RtfvS7d_V3STq5tDdKFNrry7lWm66UwaVxrel64nj6CS3P2A69cawlGKTCDl3AmzNGRvD_AKJItsQg9mJH43EUEkovBgAaE0mA9mqeXD9dvLI6qDDw==",
+        "lang": "en",
+        "pragma": "no-cache",
+        "priority": "u=1, i",
+        "referer": f"https://ads.tiktok.com/business/creativecenter/topads/{id}/pc/en?countryCode={countries_referer_query}&from=001110&period={period}",
+        "sec-ch-ua": "\"Not)A;Brand\";v=\"99\", \"Brave\";v=\"127\", \"Chromium\";v=\"127\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "sec-gpc": "1",
+        "timestamp": timestamp,
+        "user-agent": USER_AGENT,
+        "user-sign": user_sign,
+        "web-id": web_id
+    }
+
+    return requests.request("GET", url, data=payload, headers=headers, params=querystring)
+
+"""
+TIME ANALYSIS DATA FOR EACH SECOND FOR A GIVEN METRIC
+"""
+def get_time_analysis(period, countries, id):
+    metric = ""
+    pass
+
+"""
+GETS THE PERCENTILE OF THE GIVEN METRIC COMPARED TO INDUSTRY AVG
+"""
+def get_metric_percentiles(period, countries, id):
+    metric = ""
+    period_type = ""
+    pass
+
+"""
+GETS AI VIDEO ANALYSIS DATA, INCLUDING TRANSCRIPT, AD ANGLE, AND VSL FLOW
+"""
+def ai_video_analysis(period, countries, id):
     pass
 
 def main():
