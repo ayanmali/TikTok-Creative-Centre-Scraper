@@ -48,3 +48,4 @@ def get_cookies():
     with sync_playwright() as playwright:
         run(playwright)
         print(user_sign, timestamp, web_id)
+        return (user_sign, timestamp, web_id)
